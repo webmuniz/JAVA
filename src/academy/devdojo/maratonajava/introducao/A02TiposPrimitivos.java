@@ -14,6 +14,8 @@ public class A02TiposPrimitivos {
         char caractereAsc = 65; //ASCII
         char caractereUni = '\u0041'; //Unicode
 
+        String nome = "Goku";
+
         System.out.println("A idade é: " + idade + " anos");
         System.out.println(numeroGrande);
         System.out.println(salarioDouble);
@@ -24,6 +26,6 @@ public class A02TiposPrimitivos {
         System.out.println(falso);
         System.out.println(caractereAsc);
         System.out.println(caractereUni);
-
+        System.out.println("Oi! Eu sou o "+nome);
     }
 }
