@@ -70,8 +70,8 @@ public class A04Operadores {
         contador --;
         ++contador;
         --contador;
-        
-        System.out.println(contador);
+
+//        System.out.println(contador);
 
     }
 }
