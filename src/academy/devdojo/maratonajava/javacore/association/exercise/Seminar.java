@@ -5,13 +5,9 @@ public class Seminar {
     private Student[] students;
     private Locale locale;
 
-    public Seminar(String title) {
+    public Seminar(String title, Locale locale) {
         this.title = title;
-    }
-
-    public Seminar(String title, Student[] students) {
-        this.title = title;
-        this.students = students;
+        this.locale = locale;
     }
 
     public Seminar(String title, Student[] students, Locale locale) {
