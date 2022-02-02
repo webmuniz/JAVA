@@ -1,17 +1,13 @@
-package academy.devdojo.maratonajava.overwritten.domain;
+package academy.devdojo.maratonajava.javacore.modfierfinal.domain;
 
-public class Anime extends Object {
+public class Buyer {
     private String name;
 
     @Override
     public String toString() {
-        return "Anime{" +
+        return "Buyer{" +
                 "name='" + name + '\'' +
                 '}';
-    }
-
-    public Anime(String name) {
-        this.name = name;
     }
 
     public String getName() {
