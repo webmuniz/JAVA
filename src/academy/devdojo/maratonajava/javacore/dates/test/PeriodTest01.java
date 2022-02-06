@@ -3,6 +3,7 @@ package academy.devdojo.maratonajava.javacore.dates.test;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.PriorityQueue;
 
 public class PeriodTest01 {
@@ -12,14 +13,17 @@ public class PeriodTest01 {
 
         Period p1 = Period.between(now, afterTwoYears);
         Period p2 = Period.ofDays(10);
-        Period p3 = Period.ofWeeks(3);
+        Period p3 = Period.ofWeeks(58);
         Period p4 = Period.ofMonths(10);
         Period p5 = Period.ofYears(5);
 
         System.out.println("Period.between(now, afterTwoYears): " + p1);
         System.out.println("Period.ofDays(10): " + p2);
-        System.out.println("Period.ofWeeks(3): " + p3);
+        System.out.println("Period.ofWeeks(58): " + p3);
         System.out.println("Period.ofMonths(10): " + p4);
         System.out.println("Period.ofYears(5): " + p5);
+
+        System.out.println(now.until(now.plusDays(p3.getDays()), ChronoUnit.MONTHS)); //Transformando semanas em meses
+
     }
 }
