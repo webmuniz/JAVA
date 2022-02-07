@@ -6,8 +6,8 @@ import academy.devdojo.maratonajava.javacore.enumeration.domain.TypePayment;
 
 public class ClientTest01 {
     public static void main(String[] args) {
-        Client client1 = new Client("Thays Muniz", TypeClient.PESSOA_FISICA, TypePayment.DEBIT);
-        Client client2 = new Client("Wevolux", TypeClient.PESSOA_JURIDICA, TypePayment.CREDIT);
+        Client client1 = new Client("Thays", TypeClient.PESSOA_FISICA, TypePayment.DEBIT);
+        Client client2 = new Client("We", TypeClient.PESSOA_JURIDICA, TypePayment.CREDIT);
 
         System.out.println(client1);
         System.out.println(client2);
@@ -18,7 +18,5 @@ public class ClientTest01 {
         System.out.println(typeClient.getTypeReport());
         TypeClient typeClient2 = TypeClient.typeClientToNameReport("Pessoa Física");
         System.out.println(typeClient2);
-
-
     }
 }
