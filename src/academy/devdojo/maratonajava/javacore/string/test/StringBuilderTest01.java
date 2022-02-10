@@ -2,7 +2,7 @@ package academy.devdojo.maratonajava.javacore.string.test;
 
 public class StringBuilderTest01 {
     public static void main(String[] args) {
-        String name = "Elvis Muniz";
+        String name = "Elvis Muniz Silva";
 
         StringBuilder sb = new StringBuilder(name);
         sb.append(" - DevDojo").append(" Academy");
