@@ -27,7 +27,7 @@ public class NumberFormatTest01 {
 
         String valueString = "1000.325";
         try {
-            System.out.println(nfa[1].parse(valueString));;
+            System.out.println(nfa[1].parse(valueString));
         } catch (ParseException e) {
             e.printStackTrace();
         }

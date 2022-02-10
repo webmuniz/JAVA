@@ -2,7 +2,7 @@ package academy.devdojo.maratonajava.javacore.initializationblock.domain;
 
 public class Anime {
     private String nome;
-    private int[] episodios;
+    private final int[] episodios;
 
     /**
      * 1 - Alocado espaço em memória para o objeto;

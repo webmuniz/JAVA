@@ -5,7 +5,7 @@ public enum TypeClient {
     PESSOA_JURIDICA(2, "Pessoa Jurídica");
 
     public final int VALUE;
-    private String typeReport;
+    private final String typeReport;
 
     TypeClient(int value, String typeReport) {
         this.VALUE = value;

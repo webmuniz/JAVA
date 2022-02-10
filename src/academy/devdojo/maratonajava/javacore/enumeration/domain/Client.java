@@ -1,9 +1,9 @@
 package academy.devdojo.maratonajava.javacore.enumeration.domain;
 
 public class Client {
-    private String name;
-    private TypeClient typeClient;
-    private TypePayment typePayment;
+    private final String name;
+    private final TypeClient typeClient;
+    private final TypePayment typePayment;
 
     public Client(String name, TypeClient typeClient, TypePayment typePayment) {
         this.name = name;

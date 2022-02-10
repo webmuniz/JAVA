@@ -27,7 +27,7 @@ public class NumberFormatTest02 {
 
         String valueString = "$1000.325"; //Ao se tratar de moedas precisa-se usar o síbolo dela e o formato '.' ou ','
         try {
-            System.out.println(nfa[1].parse(valueString));;
+            System.out.println(nfa[1].parse(valueString));
         } catch (ParseException e) {
             e.printStackTrace();
         }
