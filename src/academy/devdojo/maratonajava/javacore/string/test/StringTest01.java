@@ -8,7 +8,7 @@ public class StringTest01 {
         System.out.println(name);
         System.out.println(name == name2);
 
-        String name3 = new String("Elvis"); //1- reference var | 2- Object String | 3-String on pool of Strings
+        String name3 = "Elvis"; //1- reference var | 2- Object String | 3-String on pool of Strings
         System.out.println(name2 == name3);
         System.out.println(name2 == name3.intern());//intern - compare to value.
 

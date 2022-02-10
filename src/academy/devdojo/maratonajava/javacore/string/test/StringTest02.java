@@ -21,7 +21,7 @@ public class StringTest02 {
 
         System.out.println(numbers.length());
         System.out.println(numbers.substring(0,3)); // Do indice 0 até...
-        System.out.println(numbers.substring(3, numbers.length())); // Do indice 3 até o final
+        System.out.println(numbers.substring(3)); // Do indice 3 até o final
         System.out.println(numbers.substring(3)); // Não precisa escrever conforme acima
 
         System.out.println(name.trim()); // remove valores em branco no começo e no fim

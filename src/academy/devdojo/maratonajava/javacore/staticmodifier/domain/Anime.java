@@ -2,7 +2,7 @@ package academy.devdojo.maratonajava.javacore.staticmodifier.domain;
 
 public class Anime {
     private String nome;
-    private static int[] episodios;
+    private static final int[] episodios;
 
     /**
      * 0 - Bloco de Inicialização é executado quando a JVM carregar a classe;

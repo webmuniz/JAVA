@@ -2,7 +2,7 @@ package academy.devdojo.maratonajava.javacore.interfaces.domain;
 
 public interface DataLoader {
     //public static final - redundante!
-    public static final int MAX_DATA_SIZE = 10;
+    int MAX_DATA_SIZE = 10;
 
     //public abstract é redundante!
     void load();
