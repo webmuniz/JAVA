@@ -4,5 +4,6 @@
 #### Here's a brief summary of what you'll find:
 
 👨🏽‍💻 DevDojo: 
+<div>
 Here we use all the basics of Java as well as my entire Learning Roadmap towards more advanced concepts and implementations.
 </div>
