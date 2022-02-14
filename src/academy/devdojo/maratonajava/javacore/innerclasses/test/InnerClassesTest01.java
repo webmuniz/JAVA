@@ -2,7 +2,7 @@ package academy.devdojo.maratonajava.javacore.innerclasses.test;
 
 public class InnerClassesTest01 {
     private String name = "Monkey D. Luffy";
-    
+    //Nested
     class Inner{
         public void printOuterClassAttribute(){
             System.out.println(name);
