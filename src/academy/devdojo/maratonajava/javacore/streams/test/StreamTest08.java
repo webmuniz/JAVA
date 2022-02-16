@@ -33,7 +33,4 @@ public class StreamTest08 {
         System.out.println(sum);
 
     }
-
-
-
 }

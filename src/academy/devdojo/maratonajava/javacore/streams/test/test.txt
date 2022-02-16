@@ -1,0 +1,22 @@
+
+Int N, i, IdadeTotal = 0, Idade, IdadeMedia.
+
+Escreva "Qual a quantidade de membros da família".
+
+Leia N.
+
+Para i=0 até i<N faça
+
+Escreva "Digite a idade do membro da familia".
+
+Leia Idade.
+
+IdadeTotal= IdadeTotal + Idade.
+
+Fim Para.
+
+IdadeMedia = IdadeTotal / N.
+
+Escreva " A idade média da sua família é: IdadeMedia" .
+
+Fim.
