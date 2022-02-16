@@ -1,6 +1,6 @@
-package academy.devdojo.maratonajava.introducao;
+package academy.devdojo.maratonajava.introduction;
 
-public class A04Operadores {
+public class A04Operators {
     public static void main(String[] args) {
 
         // + - * /
