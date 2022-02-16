@@ -1,9 +1,9 @@
-package academy.devdojo.maratonajava.introducao;
+package academy.devdojo.maratonajava.introduction;
 
 /**
-*Isso é um <b>javadoc</b>
+*This is a <b>javadoc</b>
  */
-public class A01OlaDevDojo {
+public class A01HelloDevDojo {
     public static void main(String[] args) {
         System.out.println("KA-ME-HA-ME-HAAA");
     }

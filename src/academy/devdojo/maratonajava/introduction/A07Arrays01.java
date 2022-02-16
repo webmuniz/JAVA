@@ -1,6 +1,4 @@
-package academy.devdojo.maratonajava.introducao;
-
-import java.lang.reflect.Array;
+package academy.devdojo.maratonajava.introduction;
 
 public class A07Arrays01 {
     public static void main(String[] args) {

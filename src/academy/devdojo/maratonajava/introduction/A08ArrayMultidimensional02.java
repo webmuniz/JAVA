@@ -1,6 +1,6 @@
-package academy.devdojo.maratonajava.introducao;
+package academy.devdojo.maratonajava.introduction;
 
-public class A08ArraysMultidimensionais02 {
+public class A08ArrayMultidimensional02 {
     public static void main(String[] args) {
 
         int[][] arrayInt = new int[3][];

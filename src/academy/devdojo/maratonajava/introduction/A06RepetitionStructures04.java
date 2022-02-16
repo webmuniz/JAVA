@@ -1,6 +1,6 @@
-package academy.devdojo.maratonajava.introducao;
+package academy.devdojo.maratonajava.introduction;
 
-public class A06EstruturasRepeticao04 {
+public class A06RepetitionStructures04 {
 
     //Dado o valor de um carro, descubra em quantas vezes ele pode ser parcelado.
     //Valor da parcela >= 1000,00

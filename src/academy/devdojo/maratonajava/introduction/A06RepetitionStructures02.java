@@ -1,6 +1,6 @@
-package academy.devdojo.maratonajava.introducao;
+package academy.devdojo.maratonajava.introduction;
 
-public class A06EstruturasRepeticao02 {
+public class A06RepetitionStructures02 {
     public static void main(String[] args) {
 
         //Números pares de zero a 100

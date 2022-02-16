@@ -1,8 +1,6 @@
-package academy.devdojo.maratonajava.introducao;
+package academy.devdojo.maratonajava.introduction;
 
-import javax.sound.midi.Soundbank;
-
-public class A05EstruturasCondicionais05 {
+public class A05ConditionalStructures05 {
     public static void main(String[] args) {
         //Imprima o dia da semana, considerando 1 como domingo.
 

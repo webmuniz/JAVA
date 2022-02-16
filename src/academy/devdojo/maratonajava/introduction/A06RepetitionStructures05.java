@@ -1,6 +1,6 @@
-package academy.devdojo.maratonajava.introducao;
+package academy.devdojo.maratonajava.introduction;
 
-public class A06EstruturasRepeticao05 {
+public class A06RepetitionStructures05 {
     public static void main(String[] args) {
 
         double valorCarro = 30000;

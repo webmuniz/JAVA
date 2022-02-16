@@ -1,6 +1,6 @@
-package academy.devdojo.maratonajava.introducao;
+package academy.devdojo.maratonajava.introduction;
 
-public class A08ArraysMultidimensionais01 {
+public class A08ArrayMultidimensional01 {
     public static void main(String[] args) {
 
         int[][] dias = new int[3][3];

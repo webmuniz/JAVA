@@ -1,6 +1,6 @@
-package academy.devdojo.maratonajava.introducao;
+package academy.devdojo.maratonajava.introduction;
 
-public class A06EstruturasRepeticao01 {
+public class A06RepetitionStructures01 {
     public static void main(String[] args) {
 
         //while, do while, for
