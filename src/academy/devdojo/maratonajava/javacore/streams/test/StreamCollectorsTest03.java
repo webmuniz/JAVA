@@ -7,7 +7,6 @@ import academy.devdojo.maratonajava.javacore.streams.domain.Promotion;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static academy.devdojo.maratonajava.javacore.streams.domain.Promotion.*;
 import static java.util.stream.Collectors.groupingBy;
@@ -27,23 +26,20 @@ public class StreamCollectorsTest03 {
 
     public static void main(String[] args) {
 
-        //GROUP BY PROMOTION
+        //Group by promotion
         Map<Promotion, List<LightNovel>> collect = lightNovels.stream()
                 .collect(groupingBy(ln -> (ln.getPrice() < 5) ? UNDER_PROMOTION : NORMAL_PRICE
                 ));
 
         System.out.println(collect);
 
-        //GROUP BY PROMOTION AND CATEGORY
+        //Group by promotion and category
         Map<Category, Map<Promotion, List<LightNovel>>> collect1 = lightNovels
                 .stream()
                 .collect(groupingBy(
                 LightNovel::getCategory,
                 groupingBy(ln -> (ln.getPrice() < 5) ? UNDER_PROMOTION : NORMAL_PRICE))
                 );
-
         System.out.println(collect1);
-
-
     }
 }

@@ -11,7 +11,7 @@ import static java.util.stream.Collectors.*;
 
 public class StreamCollectorsTest05 {
 
-    private static List<LightNovel> lightNovels = new ArrayList<>(List.of(
+    private static final List<LightNovel> lightNovels = new ArrayList<>(List.of(
             new LightNovel("Death Note", 3.99, Category.DRAMA),
             new LightNovel("Dragon Ball", 2.59, Category.FANTASY),
             new LightNovel("Demon Slayer", 5.89, Category.ROMANCE),
@@ -24,7 +24,7 @@ public class StreamCollectorsTest05 {
 
     public static void main(String[] args) {
 
-        //METRICS BY CATEGORY:
+        //Metrics by category:
         final Map<Category, DoubleSummaryStatistics> collect = lightNovels.stream()
                 .collect(groupingBy(
                         LightNovel::getCategory,
@@ -41,7 +41,6 @@ public class StreamCollectorsTest05 {
                         )));
         System.out.println("---------\n" + collect1);
 
-
         final Map<Category, LinkedHashSet<Promotion>> collect2 = lightNovels.stream()
                 .collect(groupingBy(
                         LightNovel::getCategory,
@@ -50,9 +49,7 @@ public class StreamCollectorsTest05 {
                                 toCollection(LinkedHashSet::new)
                         )));
         System.out.println(collect2);
-
     }
-
     private static Promotion getPromotion(LightNovel ln) {
         return ln.getPrice() < 5 ? UNDER_PROMOTION : NORMAL_PRICE;
     }

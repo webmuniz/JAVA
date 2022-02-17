@@ -44,12 +44,9 @@ public class StreamCollectorsTest02 {
 
         System.out.println(categoryLightNovelMap);
 
-
-        //SAME FUNCTION USING STREAM:
-
+        //Same function using Stream:
         Map<Category, List<LightNovel>> collect = lightNovels.stream()
                 .collect(Collectors.groupingBy(LightNovel::getCategory));
         System.out.println(collect);
-
     }
 }
