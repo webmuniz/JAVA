@@ -1,10 +1,14 @@
-package academy.devdojo.maratonajava.javacore.threads.domain;
+package academy.devdojo.maratonajava.javacore.concurrency.domain;
 
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Members {
     private final Queue<String> emails = new ArrayBlockingQueue<>(10); //ArrayBlockingQueue - Thread safe
+    private final ReentrantLock lock = new ReentrantLock();
+    private final Condition condition = lock.newCondition();
     private boolean open = true;
 
     public boolean isOpen() {
@@ -12,37 +16,50 @@ public class Members {
     }
 
     public int pendingEmails() {
-        synchronized (emails) {
+        lock.lock();
+        try {
             return emails.size();
+        } finally {
+            lock.unlock();
         }
     }
 
     public void addMemberEmail(String email) {
-        synchronized (this.emails) {
+        lock.lock();
+        try {
             final String threadName = Thread.currentThread().getName();
             System.out.println(threadName + " email added on the list.");
             this.emails.add(email);
-            this.emails.notifyAll(); //Notify all threads to continue
+            condition.signalAll(); //Notify all
+        } finally {
+            lock.unlock();
         }
     }
 
     public String retrieveEmail() throws InterruptedException {
         System.out.println(Thread.currentThread().getName() + " checking if there are emails...");
-        synchronized (this.emails) {
+        lock.lock();
+        try {
             while (this.emails.isEmpty()) {
                 if (!open) return null;
                 System.out.println(Thread.currentThread().getName() + " No email available on the list, standby mode");
-                this.emails.wait(); //wait() - Must be inside a synchronized block!
+                condition.await(); //SAME - this.emails.wait(); wait() - Must be inside a synchronized block!
             }
             return this.emails.poll();
+        } finally {
+            lock.unlock();
         }
     }
 
     public void close() {
         open = false;
-        synchronized (this.emails) {
+        lock.lock();
+
+        try {
             System.out.println(Thread.currentThread().getName() + " Notifying everyone that we are no longer receiving emails");
-            this.emails.notifyAll();
+            condition.signalAll();
+        }finally {
+            lock.unlock();
         }
     }
 }
