@@ -62,6 +62,10 @@ public class Person {
         }
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
     //Made manually
 //    public static class PersonBuilder{
 //        private String firstName;
