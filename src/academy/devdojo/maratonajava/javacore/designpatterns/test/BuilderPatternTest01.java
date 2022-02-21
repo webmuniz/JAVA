@@ -5,7 +5,8 @@ import academy.devdojo.maratonajava.javacore.designpatterns.domain.Person;
 public class BuilderPatternTest01 {
     public static void main(String[] args) {
 
-        final Person person = new Person.PersonBuilder()
+        final Person person = Person.PersonBuilder
+                .builder()
                 .firstName("web")
                 .lastName("muniz")
                 .username("webmuniz")
