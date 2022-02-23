@@ -17,7 +17,8 @@ public class ConnectionFactoryTest {
         //ProducerService.findAll();
         //ProducerService.findByName("Kon");
         //ProducerService.showProducerMetadata();
-        ProducerService.showDriverMetadata();
+        //ProducerService.showDriverMetadata();
+        ProducerService.showTypeScrollWroking();
 
 //        log.info("INFO");
 //        log.debug("DEBUG");

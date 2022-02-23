@@ -131,26 +131,91 @@ public class ProducerRepository {
         try (Connection conn = ConnectionFactory.getConnection()) {
             final DatabaseMetaData dbMetaData = conn.getMetaData();
 
-            if (dbMetaData.supportsResultSetType(ResultSet.TYPE_FORWARD_ONLY)){
+            if (dbMetaData.supportsResultSetType(ResultSet.TYPE_FORWARD_ONLY)) {
                 log.info("Supports TYPE_FORWARD_ONLY");
-                if(dbMetaData.supportsResultSetConcurrency(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE));
+                if (dbMetaData.supportsResultSetConcurrency(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE)) ;
                 log.info("And supports CONCUR_UPDATABLE");
             }
 
-            if (dbMetaData.supportsResultSetType(ResultSet.TYPE_SCROLL_INSENSITIVE)){
+            if (dbMetaData.supportsResultSetType(ResultSet.TYPE_SCROLL_INSENSITIVE)) {
                 log.info("Supports TYPE_SCROLL_INSENSITIVE");
-                if(dbMetaData.supportsResultSetConcurrency(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE));
+                if (dbMetaData.supportsResultSetConcurrency(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE))
+                    ;
                 log.info("And supports CONCUR_UPDATABLE");
             }
 
-            if (dbMetaData.supportsResultSetType(ResultSet.TYPE_SCROLL_SENSITIVE)){
+            if (dbMetaData.supportsResultSetType(ResultSet.TYPE_SCROLL_SENSITIVE)) {
                 log.info("Supports TYPE_FORWARD_ONLY");
-                if(dbMetaData.supportsResultSetConcurrency(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE));
+                if (dbMetaData.supportsResultSetConcurrency(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE))
+                    ;
                 log.info("And supports CONCUR_UPDATABLE");
             }
 
         } catch (SQLException e) {
             log.error("Error while trying to find metadata from driver", e);
+        }
+    }
+
+    public static void showTypeScrollWroking() {
+        log.info("Finding ...");
+        String sql = "SELECT * FROM anime_store.producer;"; //order by name desc; - invert order
+
+        try (Connection conn = ConnectionFactory.getConnection();
+             Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            //REMEMBER! - Cursor concept!
+            //Moving cursor:
+            //rs.next()
+            //rs.previous()
+
+            //get last row:
+            log.info("Last row? '{}'", rs.last());
+            log.info("Row number? '{}'", rs.getRow());
+            log.info(Producer.builder()
+                    .id(rs.getInt("id"))
+                    .name(rs.getString("name"))
+                    .build());
+            log.info("------");
+
+            //get first row:
+            log.info("First row? '{}'", rs.first());
+            log.info("Row number? '{}'", rs.getRow());
+            log.info(Producer.builder()
+                    .id(rs.getInt("id"))
+                    .name(rs.getString("name"))
+                    .build());
+            log.info("------");
+
+            //get row absolute inputting row:
+            log.info("Row absolute? '{}'", rs.absolute(2));
+            log.info("Row number? '{}'", rs.getRow());
+            log.info(Producer.builder()
+                    .id(rs.getInt("id"))
+                    .name(rs.getString("name"))
+                    .build());
+            log.info("------");
+
+            //get relative row by inputting:
+            log.info("Row relative? '{}'", rs.relative(-1));
+            log.info("Row number? '{}'", rs.getRow());
+            log.info(Producer.builder()
+                    .id(rs.getInt("id"))
+                    .name(rs.getString("name"))
+                    .build());
+            log.info("------");
+
+            //is last/after row:
+            log.info("Is last row? '{}'", rs.isLast()); //Don't move cursor
+            log.info("Is last row? '{}'", rs.isAfterLast()); //Don't move cursor
+            log.info("------");
+
+            //is first/before row:
+            log.info("Is first row? '{}'", rs.isFirst()); //Don't move cursor
+            log.info("Is first row? '{}'", rs.isBeforeFirst()); //Don't move cursor
+
+        } catch (SQLException e) {
+            log.error("Error while trying to find...", e);
         }
     }
 }
