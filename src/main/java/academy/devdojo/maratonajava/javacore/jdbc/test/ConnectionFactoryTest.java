@@ -14,6 +14,10 @@ public class ConnectionFactoryTest {
         //ProducerService.insert(studioDeen);
         //ProducerService.delete(4);
         //ProducerService.update(studioUpdate);
+        //ProducerService.findAll();
+        //ProducerService.findByName("Kon");
+        //ProducerService.showProducerMetadata();
+        ProducerService.showDriverMetadata();
 
 //        log.info("INFO");
 //        log.debug("DEBUG");
