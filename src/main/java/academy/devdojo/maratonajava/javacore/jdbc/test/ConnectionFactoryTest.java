@@ -25,6 +25,8 @@ public class ConnectionFactoryTest {
         //ProducerService.findByNameAndInsertWhenNotFound("Bones");
         //ProducerService.findByNameAndDelete("Bones");
 
+        ProducerService.findByNameCallableStatement("MadHouse");
+
 //        log.info("INFO");
 //        log.debug("DEBUG");
 //        log.warn("WARN");

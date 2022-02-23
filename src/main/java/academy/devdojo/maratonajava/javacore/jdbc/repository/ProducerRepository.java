@@ -112,6 +112,28 @@ public class ProducerRepository {
         return producers;
     }
 
+    public static List<Producer> findByNameCallableStatement(String name) {  //Used to call stored produces or functions in the Database
+        log.info("Finding producers by name...");
+        List<Producer> producers = new ArrayList<>();
+
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = callableStatementFindByName(conn, name);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                var idDb = rs.getInt("id");
+                var nameDb = rs.getString("name");
+
+                final Producer producer = Producer.builder().id(idDb).name(nameDb).build();
+                producers.add(producer);
+            }
+        } catch (SQLException e) {
+            log.error("Error while trying to find all producers from database", e);
+        }
+        log.info(producers);
+        return producers;
+    }
+
     public static List<Producer> findAll() {
         log.info("Finding All producers...");
         return findByName("");
@@ -330,6 +352,14 @@ public class ProducerRepository {
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, String.format("%%%s%%",name));
         return ps;
+    }
+
+    private static CallableStatement callableStatementFindByName(Connection conn, String name) throws SQLException {
+        String sql = "CALL `anime_store`.`sp_get_producer_by_name`(?);"; //? - wild card
+
+        CallableStatement cs = conn.prepareCall(sql);
+        cs.setString(1, String.format("%%%s%%",name));
+        return cs;
     }
 
     private static PreparedStatement preparedStatementUpdate(Connection conn, Producer producer) throws SQLException {
