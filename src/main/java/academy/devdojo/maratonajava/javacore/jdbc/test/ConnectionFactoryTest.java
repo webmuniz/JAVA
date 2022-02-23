@@ -18,7 +18,8 @@ public class ConnectionFactoryTest {
         //ProducerService.findByName("Kon");
         //ProducerService.showProducerMetadata();
         //ProducerService.showDriverMetadata();
-        ProducerService.showTypeScrollWroking();
+        //ProducerService.showTypeScrollWroking();
+        ProducerService.findByNameAndUpdateToUpperCase("konami");
 
 //        log.info("INFO");
 //        log.debug("DEBUG");
