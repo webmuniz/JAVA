@@ -12,14 +12,16 @@ public class ConnectionFactoryTest {
         Producer studioUpdate = Producer.builder().id(3).name("Akira").build();
 
         //ProducerService.insert(studioDeen);
-        //ProducerService.delete(4);
+        //ProducerService.delete(13);
         //ProducerService.update(studioUpdate);
         //ProducerService.findAll();
         //ProducerService.findByName("Kon");
         //ProducerService.showProducerMetadata();
         //ProducerService.showDriverMetadata();
         //ProducerService.showTypeScrollWroking();
-        ProducerService.findByNameAndUpdateToUpperCase("konami");
+        //ProducerService.findByNameAndUpdateToUpperCase("konami");
+        //ProducerService.findByNameAndInsertWhenNotFound("Bones");
+        ProducerService.findByNameAndDelete("Bones");
 
 //        log.info("INFO");
 //        log.debug("DEBUG");

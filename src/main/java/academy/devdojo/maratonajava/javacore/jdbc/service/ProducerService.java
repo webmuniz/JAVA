@@ -41,8 +41,16 @@ public class ProducerService {
         ProducerRepository.showTypeScrollWroking();
     }
 
-    public static List<Producer> findByNameAndUpdateToUpperCase(String name){
-        return ProducerRepository.findByNameAndUpdateToUpperCase(name);
+    public static void findByNameAndUpdateToUpperCase(String name){
+        ProducerRepository.findByNameAndUpdateToUpperCase(name);
+    }
+
+    public static List<Producer> findByNameAndInsertWhenNotFound(String name){
+        return ProducerRepository.findByNameAndInsertWhenNotFound(name);
+    }
+
+    public static void findByNameAndDelete(String name){
+        ProducerRepository.findByNameAndDelete(name);
     }
 
     private static void requiredValidId(Integer id) {

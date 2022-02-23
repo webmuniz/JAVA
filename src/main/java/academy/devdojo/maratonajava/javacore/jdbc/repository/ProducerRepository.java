@@ -219,7 +219,7 @@ public class ProducerRepository {
         }
     }
 
-    public static List<Producer> findByNameAndUpdateToUpperCase(String name) {
+    public static void findByNameAndUpdateToUpperCase(String name) {
         log.info("Finding producers by name and update to UpperCase...");
         String sql = "SELECT * FROM anime_store.producer where name like '%%%s%%';".formatted(name);
         List<Producer> producers = new ArrayList<>();
@@ -230,7 +230,8 @@ public class ProducerRepository {
 
             while (rs.next()) {
                 rs.updateString("name", rs.getString("name").toUpperCase());
-                rs.updateRow(); //Important to applying changes!
+                rs.cancelRowUpdates(); //Cancel row update - USE BEFORE!
+                rs.updateRow(); //Important to apply the changes
 
                 var idDb = rs.getInt("id");
                 var nameDb = rs.getString("name");
@@ -244,6 +245,57 @@ public class ProducerRepository {
         }
 
         log.info(producers);
+    }
+
+    public static List<Producer> findByNameAndInsertWhenNotFound(String name) {
+        log.info("Finding producers by name ...");
+        String sql = "SELECT * FROM anime_store.producer where name like '%%%s%%';".formatted(name);
+        List<Producer> producers = new ArrayList<>();
+
+        try (Connection conn = ConnectionFactory.getConnection();
+             Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+             ResultSet rs = stmt.executeQuery(sql)) {
+            if (rs.next()) return producers;
+
+            insertNewProducer(name, rs);
+            producers.add(getProducer(rs));
+
+        } catch (SQLException e) {
+            log.error("Error while trying to find all producers from database", e);
+        }
+        log.info(producers);
         return producers;
+    }
+
+    public static void findByNameAndDelete(String name) {
+        log.info("Finding producers by name and delete...");
+        String sql = "SELECT * FROM anime_store.producer where name like '%%%s%%';".formatted(name);
+
+        try (Connection conn = ConnectionFactory.getConnection();
+             Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()){
+                log.info("Deleting: '{}'", rs.getString("name"));
+                rs.deleteRow();
+            }
+
+        } catch (SQLException e) {
+            log.error("Error while trying to find all producers from database", e);
+        }
+    }
+
+    //Created for support:
+
+    private static void insertNewProducer(String name, ResultSet rs) throws SQLException {
+        rs.moveToInsertRow();
+        rs.updateString("name", name);
+        rs.insertRow();
+    }
+
+    private static Producer getProducer(ResultSet rs) throws SQLException {
+        rs.beforeFirst();
+        rs.next();
+        return Producer.builder().id(rs.getInt("id")).name(rs.getString("name")).build();
     }
 }
