@@ -134,7 +134,7 @@ public class AnimeRepository {
         String sql = """
                 SELECT a.id, a.name, a.episodes, a.producer_id, p.name as 'producer_name' FROM anime_store.anime a inner join
                 anime_store.producer p on a.producer_id = p.id
-                where a.name = ?;
+                where a.id = ?;
                 """;
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, id);
