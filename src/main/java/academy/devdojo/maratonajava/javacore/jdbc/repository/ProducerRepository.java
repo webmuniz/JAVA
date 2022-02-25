@@ -33,22 +33,6 @@ public class ProducerRepository {
         }
     }
 
-    private static void preparedStatementSaveTransation(Connection conn, List<Producer> producers) throws SQLException {
-        String sql = "INSERT INTO `anime_store`.`producer` (`name`) VALUES (?);";
-        boolean shouldRollback = false;
-        for(Producer p: producers){
-            try( PreparedStatement ps = conn.prepareStatement(sql)){
-                log.info("Saving producer '{}'", p.getName());
-                ps.setString(1, p.getName());
-                ps.execute();
-            }catch (SQLException e){
-                e.printStackTrace();
-                shouldRollback = true;
-            }
-        }
-        if (shouldRollback) conn.rollback();
-    }
-
     public static void delete(int id) {
         String sql = "DELETE FROM `anime_store`.`producer` WHERE (`id` = '%d');".formatted(id);
 
@@ -370,14 +354,30 @@ public class ProducerRepository {
         }
     }
 
-    //Created for support:
 
+    //Created for support:
     private static PreparedStatement preparedStatementFindByName(Connection conn, String name) throws SQLException {
         String sql = "SELECT * FROM anime_store.producer where name like ?;"; //? - wild card
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, String.format("%%%s%%",name));
         return ps;
+    }
+
+    private static void preparedStatementSaveTransation(Connection conn, List<Producer> producers) throws SQLException {
+        String sql = "INSERT INTO `anime_store`.`producer` (`name`) VALUES (?);";
+        boolean shouldRollback = false;
+        for(Producer p: producers){
+            try( PreparedStatement ps = conn.prepareStatement(sql)){
+                log.info("Saving producer '{}'", p.getName());
+                ps.setString(1, p.getName());
+                ps.execute();
+            }catch (SQLException e){
+                e.printStackTrace();
+                shouldRollback = true;
+            }
+        }
+        if (shouldRollback) conn.rollback();
     }
 
     private static CallableStatement callableStatementFindByName(Connection conn, String name) throws SQLException {
