@@ -10,7 +10,6 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class AnimeService {
-
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public static void menu(int op) {
@@ -19,7 +18,6 @@ public class AnimeService {
             case 2 -> delete();
             case 3 -> save();
             case 4 -> update();
-            default -> throw new IllegalArgumentException("Not a valid option");
         }
     }
 
@@ -27,7 +25,7 @@ public class AnimeService {
         System.out.println("Type the name or empty to all:");
         String name = SCANNER.nextLine();
         List<Anime> animes = AnimeRepository.findByName(name);
-        animes.forEach(p -> System.out.printf(" %d | %s%n", p.getId(), p.getName()));
+        animes.forEach(p -> System.out.printf(" %d | %s %d %s%n", p.getId(), p.getName(), p.getEpisodes(), p.getProducer().getName()));
     }
 
     private static void delete() {
